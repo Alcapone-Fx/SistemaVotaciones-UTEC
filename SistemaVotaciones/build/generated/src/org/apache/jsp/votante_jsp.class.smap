@@ -1,0 +1,18 @@
+SMAP
+votante_jsp.java
+JSP
+*S JSP
+*F
++ 0 votante.jsp
+votante.jsp
++ 1 cache.jsp
+cache.jsp
+*L
+1,2:51
+2#1,6:53
+7:59
+2#0,10:60
+11,93:70
+104,4:164
+107,9:168
+*E
