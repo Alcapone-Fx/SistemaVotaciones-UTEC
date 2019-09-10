@@ -11,10 +11,10 @@ import org.apache.log4j.Logger;
 */
 public class Conexion {
     private String username = "postgres";
-    private String password = "Itca123";
+    private String password = "1234";
     private String hostname = "127.0.0.1";
     private String puerto = "5432";
-    private String base = "multiplataforma";
+    private String base = "postgres";
     private String classname = "org.postgresql.Driver";
     private String url = "jdbc:postgresql://" + hostname + ":" + puerto + "/" + base;
     private static Connection conecto;
