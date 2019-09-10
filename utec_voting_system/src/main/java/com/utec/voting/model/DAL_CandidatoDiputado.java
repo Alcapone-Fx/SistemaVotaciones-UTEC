@@ -90,13 +90,13 @@ public class DAL_CandidatoDiputado {
         }
     return l1;
     }
-    
-    public static void main(String[] args) {
-        DAL_dui dui = new DAL_dui();
-        Dui n = new Dui("05557867-3", "12-12-1212", "12-12-1212", "William", "Vazquez", 1, "12-12-1222",11, "Madre", "Padre", 1, 28);
-        dui.insertarDui(n);
-        Usuarios u = new Usuarios("05557867-3", "admin", "admin", 1);
-        DAL_Usuarios ob = new DAL_Usuarios();
-        System.out.println(ob.insertarUsuario(u));
-    }
+//    
+//    public static void main(String[] args) {
+//        DAL_dui dui = new DAL_dui();
+//        Dui n = new Dui("05557867-3", "12-12-1212", "12-12-1212", "William", "Vazquez", 1, "12-12-1222",11, "Madre", "Padre", 1, 28);
+//        dui.insertarDui(n);
+//        Usuarios u = new Usuarios("05557867-3", "admin", "admin", 1);
+//        DAL_Usuarios ob = new DAL_Usuarios();
+//        System.out.println(ob.insertarUsuario(u));
+//    }
 }

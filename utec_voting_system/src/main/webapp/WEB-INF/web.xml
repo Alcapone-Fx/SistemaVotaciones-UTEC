@@ -2,51 +2,51 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Autentificando</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.Autentificando</servlet-class>
+        <servlet-class>com.utec.voting.controller.Autentificando</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CerrarSesion</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.CerrarSesion</servlet-class>
+        <servlet-class>com.utec.voting.controller.CerrarSesion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorDireccion</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorDireccion</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorDireccion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorMunicipio</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorMunicipio</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorMunicipio</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorPartido</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorPartido</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorPartido</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorTipoUsuario</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorTipoUsuario</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorTipoUsuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorUsuarios</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorUsuarios</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorUsuarios</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CrearUsuario</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.CrearUsuario</servlet-class>
+        <servlet-class>com.utec.voting.controller.CrearUsuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>WebService</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.WebService</servlet-class>
+        <servlet-class>com.utec.voting.controller.WebService</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorDepartamento</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorDepartamento</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorDepartamento</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Voto</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.Voto</servlet-class>
+        <servlet-class>com.utec.voting.controller.Voto</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorDui</servlet-name>
-        <servlet-class>com.utec.voting.controller.controller.ControladorDui</servlet-class>
+        <servlet-class>com.utec.voting.controller.ControladorDui</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Autentificando</servlet-name>

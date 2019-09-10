@@ -36,61 +36,57 @@ public class Autentificando extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        //aqui
-        String usuario = request.getParameter("usuario");
-        String pass = request.getParameter("pass");
-        Usuario objUsuario = new Usuario(usuario, pass);
-        ControladorUsuario cu = new ControladorUsuario();
-        DAL_VotoCandidato voto = new DAL_VotoCandidato();
-        DAL_CandidatoDiputado candidatos = new DAL_CandidatoDiputado();
-        DAL_dui dui = new DAL_dui();
-        DAL_VotoUsuario votousuario = new DAL_VotoUsuario();
-        String usuario_dui = dui.mostrarDui(objUsuario);
-        String departamento = dui.mostrarDepartamentoPerteneciente(usuario_dui);
-        int sufragio = votousuario.knowSufragio(usuario_dui);
-        DAL_dui ob=new DAL_dui();
-            DAL_Departamento depa = new DAL_Departamento();
-            DAL_EstadoFamiliar esta = new DAL_EstadoFamiliar();
-            DAL_Genero gene = new DAL_Genero();
-            
-            //if(request.getParameter("btnM")!=null){
-                    
-        
-        if(cu.validar(objUsuario)){
-            String tipor = "1";
-            String tipo = cu.tipo(objUsuario);
-            if(tipo.equals(tipor))
-            {
-            response.sendRedirect("administracion.jsp");
-            HttpSession sesion = request.getSession(true);
-            sesion.setAttribute("usuario", usuario);
-            sesion.setAttribute("departamento", departamento);
-            request.setAttribute("mosDui", ob.mostrarDUI());
-            request.setAttribute("mosDepa", depa.mostrarDepartamento());
-            request.setAttribute("mosEsta", esta.mostrarEstado());
-            request.setAttribute("mosGene", gene.mostrarGenero());
-            }
-            else{
-            response.sendRedirect("votante.jsp");
-            HttpSession sesion = request.getSession(true);
-            sesion.setAttribute("departamento", departamento);
-            sesion.setAttribute("usuario", usuario);
-            sesion.setAttribute("diputado", dui);
-            sesion.setAttribute("dui", usuario_dui);
-            sesion.setAttribute("knowsufragio", sufragio);
-            }
-        }
-        else{
-            response.sendRedirect("graficosVotaciones.jsp");
-            HttpSession sesion = request.getSession(true);
-            sesion.setAttribute("votos", voto.mostrar());
-            sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
-            sesion.setAttribute("departamento", departamento);
-        }
-    }
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		// aqui
+		String usuario = request.getParameter("usuario");
+		String pass = request.getParameter("pass");
+		Usuario objUsuario = new Usuario(usuario, pass);
+		ControladorUsuario cu = new ControladorUsuario();
+		DAL_VotoCandidato voto = new DAL_VotoCandidato();
+		DAL_CandidatoDiputado candidatos = new DAL_CandidatoDiputado();
+		DAL_dui dui = new DAL_dui();
+		DAL_VotoUsuario votousuario = new DAL_VotoUsuario();
+		String usuario_dui = dui.mostrarDui(objUsuario);
+		String departamento = dui.mostrarDepartamentoPerteneciente(usuario_dui);
+		int sufragio = votousuario.knowSufragio(usuario_dui);
+		DAL_dui ob = new DAL_dui();
+		DAL_Departamento depa = new DAL_Departamento();
+		DAL_EstadoFamiliar esta = new DAL_EstadoFamiliar();
+		DAL_Genero gene = new DAL_Genero();
+
+		// if(request.getParameter("btnM")!=null){
+
+		if (cu.validar(objUsuario)) {
+			String tipor = "1";
+			String tipo = cu.tipo(objUsuario);
+			if (tipo.equals(tipor)) {
+				HttpSession sesion = request.getSession(true);
+				sesion.setAttribute("usuario", usuario);
+				sesion.setAttribute("departamento", departamento);
+				request.setAttribute("mosDui", ob.mostrarDUI());
+				request.setAttribute("mosDepa", depa.mostrarDepartamento());
+				request.setAttribute("mosEsta", esta.mostrarEstado());
+				request.setAttribute("mosGene", gene.mostrarGenero());
+				response.sendRedirect("administracion.jsp");
+			} else {
+				HttpSession sesion = request.getSession(true);
+				sesion.setAttribute("departamento", departamento);
+				sesion.setAttribute("usuario", usuario);
+				sesion.setAttribute("diputado", dui);
+				sesion.setAttribute("dui", usuario_dui);
+				sesion.setAttribute("knowsufragio", sufragio);
+				response.sendRedirect("votante.jsp");
+			}
+		} else {
+			HttpSession sesion = request.getSession(true);
+			sesion.setAttribute("votos", voto.mostrar());
+			sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
+			sesion.setAttribute("departamento", departamento);
+			response.sendRedirect("graficosVotaciones.jsp");
+		}
+	}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
