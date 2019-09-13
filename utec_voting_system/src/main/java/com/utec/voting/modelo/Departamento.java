@@ -7,6 +7,16 @@ package com.utec.voting.modelo;
 public class Departamento {
 	private Integer depId;
 	private String depNombre;
+	
+	/**
+	 * @param depId
+	 * @param depNombre
+	 */
+	public Departamento(Integer depId, String depNombre) {
+		super();
+		this.depId = depId;
+		this.depNombre = depNombre;
+	}
 
 	/**
 	 * @return the depId
