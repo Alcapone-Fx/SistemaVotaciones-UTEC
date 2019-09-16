@@ -7,33 +7,38 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 import com.utec.voting.jdbc.Conexion;
-import com.utec.voting.modelo.Departamento;
+import com.utec.voting.modelo.TipoUsuario;
 
-public class DepartamentoService extends Conexion implements Service<Departamento>, Serializable {
+/**
+ * @author Kevin Orellana
+ * @version 1.0 Date: September 2019
+ */
+
+public class TipoUsuarioService extends Conexion implements Service<TipoUsuario>, Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final String TABLE = "DEPARTAMENTO";
+	private static final String TABLE = "TIPO_USUARIO";
 
 	/**
 	 * Variable de logueo para errores.
 	 */
-	static final Logger logger = Logger.getLogger(DepartamentoService.class);
-
+	static final Logger logger = Logger.getLogger(TipoUsuarioService.class);
+	
 	@Override
-	public ArrayList<Departamento> getAll() throws SQLException {
-		Departamento g;
-		ArrayList<Departamento> l1 = new ArrayList<>();
+	public ArrayList<TipoUsuario> getAll() throws SQLException {
+		TipoUsuario g;
+		ArrayList<TipoUsuario> l1 = new ArrayList<>();
 		try {
 			setRs(consPrepare(SELECT + TABLE).executeQuery());
 			while (getRs().next()) {
-				g = new Departamento(getRs().getInt(1), getRs().getString(2));
+				g = new TipoUsuario(getRs().getInt(1), getRs().getString(2));
 				l1.add(g);
 			}
 		} catch (Exception e) {
-			logger.error("Error <DepartamentoService: getAll>: " + e);
+			logger.error("Error <TipoUsuarioService: getAll>: " + e);
 		} finally {
 			getPs().close();
 		}
@@ -41,11 +46,11 @@ public class DepartamentoService extends Conexion implements Service<Departament
 	}
 
 	@Override
-	public Boolean save(Departamento t) throws SQLException {
+	public Boolean save(TipoUsuario t) throws SQLException {
 		boolean bandera = false;
 		try {
-			setPs(consPrepare(INSERT + TABLE + "(DEP_NOMBRE) VALUES (?)"));
-			getPs().setString(1, t.getDepNombre());
+			setPs(consPrepare(INSERT + TABLE + "(TUS_TIPO) VALUES (?)"));
+			getPs().setString(1, t.getTusTipo());
 			if (getPs().executeUpdate() == 1) {
 				bandera = true;
 			}
@@ -58,12 +63,12 @@ public class DepartamentoService extends Conexion implements Service<Departament
 	}
 
 	@Override
-	public Boolean update(Departamento t) throws SQLException {
+	public Boolean update(TipoUsuario t) throws SQLException {
 		boolean bandera = false;
 		try {
-			setPs(consPrepare(UPDATE + TABLE + SET + "DEP_NOMBRE = ? " + WHERE + " DEP_ID = ?"));
-			getPs().setString(1, t.getDepNombre());
-			getPs().setInt(2, t.getDepId());
+			setPs(consPrepare(UPDATE + TABLE + SET + "TUS_TIPO = ? " + WHERE + " TUS_ID = ?"));
+			getPs().setString(1, t.getTusTipo());
+			getPs().setInt(2, t.getTusId());
 			if (getPs().executeUpdate() == 1) {
 				bandera = true;
 			}
@@ -76,11 +81,11 @@ public class DepartamentoService extends Conexion implements Service<Departament
 	}
 
 	@Override
-	public Boolean delete(Departamento t) throws SQLException {
+	public Boolean delete(TipoUsuario t) throws SQLException {
 		boolean bandera = false;
 		try {
-			setPs(consPrepare(DELETE + TABLE + WHERE + " DEP_ID = ?"));
-			getPs().setInt(1, t.getDepId());
+			setPs(consPrepare(DELETE + TABLE + WHERE + " TUS_ID = ?"));
+			getPs().setInt(1, t.getTusId());
 			if (getPs().executeUpdate() == 1) {
 				bandera = true;
 			}
@@ -93,14 +98,14 @@ public class DepartamentoService extends Conexion implements Service<Departament
 	}
 
 	@Override
-	public Departamento finById(Integer id) throws SQLException {
-		Departamento g =  null;
+	public TipoUsuario finById(Integer id) throws SQLException {
+		TipoUsuario g =  null;
 		try {
-			setPs(consPrepare(SELECT + TABLE + WHERE + "DEP_ID = ?"));
+			setPs(consPrepare(SELECT + TABLE + WHERE + "TUS_ID = ?"));
 			getPs().setInt(1, id);
 			setRs(getPs().executeQuery());
 			while (getRs().next()) {
-				g = new Departamento(getRs().getInt(1), getRs().getString(2));
+				g = new TipoUsuario(getRs().getInt(1), getRs().getString(2));
 			}
 		} catch (Exception e) {
 			logger.error("Error: " + e);
@@ -111,7 +116,7 @@ public class DepartamentoService extends Conexion implements Service<Departament
 	}
 
 	@Override
-	public Departamento finById(String id) throws SQLException {
+	public TipoUsuario finById(String id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

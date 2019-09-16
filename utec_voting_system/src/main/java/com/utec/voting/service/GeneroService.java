@@ -23,12 +23,12 @@ public class GeneroService extends Conexion implements Service<Genero>, Serializ
 	/**
 	 * Variable de logueo para errores.
 	 */
-	static final Logger logger = Logger.getLogger(Conexion.class);
+	static final Logger logger = Logger.getLogger(GeneroService.class);
 
 	@Override
 	public ArrayList<Genero> getAll() throws SQLException {
 		Genero g;
-		ArrayList<Genero> l1 = new ArrayList<Genero>();
+		ArrayList<Genero> l1 = new ArrayList<>();
 		try {
 			setRs(consPrepare(SELECT + TABLE).executeQuery());
 			while (getRs().next()) {
@@ -98,8 +98,20 @@ public class GeneroService extends Conexion implements Service<Genero>, Serializ
 
 	@Override
 	public Genero finById(Integer id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Genero g =  null;
+		try {
+			setPs(consPrepare(SELECT + TABLE + WHERE + "GEN_ID = ?"));
+			getPs().setInt(1, id);
+			setRs(getPs().executeQuery());
+			while (getRs().next()) {
+				g = new Genero(getRs().getInt(1), getRs().getString(2));
+			}
+		} catch (Exception e) {
+			logger.error("Error: " + e);
+		} finally {
+			getPs().close();
+		}
+		return g;
 	}
 
 	@Override

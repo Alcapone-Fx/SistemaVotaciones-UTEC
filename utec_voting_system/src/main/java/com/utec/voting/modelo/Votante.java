@@ -1,6 +1,6 @@
 package com.utec.voting.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author Kevin Orellana

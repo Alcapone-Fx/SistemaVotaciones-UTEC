@@ -6,16 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.utec.voting.model.DAL_CandidatoDiputado;
-import com.utec.voting.model.DAL_Departamento;
-import com.utec.voting.model.DAL_EstadoFamiliar;
-import com.utec.voting.model.DAL_Genero;
-import com.utec.voting.model.DAL_VotoCandidato;
-import com.utec.voting.model.DAL_VotoUsuario;
-import com.utec.voting.model.DAL_dui;
-import com.utec.voting.model.Usuario;
 /**
  *
  * @author Kevin Orellana
@@ -39,10 +29,11 @@ public class Autentificando extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		// aqui
 		String usuario = request.getParameter("usuario");
 		String pass = request.getParameter("pass");
-		Usuario objUsuario = new Usuario(usuario, pass);
+		
+		
+		/**Usuario objUsuario = new Usuario(usuario, pass);
 		ControladorUsuario cu = new ControladorUsuario();
 		DAL_VotoCandidato voto = new DAL_VotoCandidato();
 		DAL_CandidatoDiputado candidatos = new DAL_CandidatoDiputado();
@@ -85,7 +76,7 @@ public class Autentificando extends HttpServlet {
 			sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
 			sesion.setAttribute("departamento", departamento);
 			response.sendRedirect("graficosVotaciones.jsp");
-		}
+		}**/
 	}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,6 +1,6 @@
 package com.utec.voting.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @author Kevin Orellana
@@ -14,12 +14,16 @@ public class Persona {
 	private String perPApellido;
 	private String perSApellido;
 	private Date perFechaNac;
-	private String perEdad;
+	private Integer perEdad;
 	private Genero perGenId;
 	private Departamento perDepId;
 	private EstadoFamiliar perEstId;
 	private String perMadre;
 	private String perPadre;
+	
+	public Persona() {
+		
+	}
 	
 	/**
 	 * @param perDui
@@ -36,7 +40,7 @@ public class Persona {
 	 * @param perMadre
 	 * @param perPadre
 	 */
-	public Persona(String perDui, String perPNombre, String perSNombre, String perTNombre, String perPApellido, String perSApellido, Date perFechaNac, String perEdad, Genero perGenId, Departamento perDepId, EstadoFamiliar perEstId, String perMadre, String perPadre) {
+	public Persona(String perDui, String perPNombre, String perSNombre, String perTNombre, String perPApellido, String perSApellido, Date perFechaNac, Integer perEdad, Genero perGenId, Departamento perDepId, EstadoFamiliar perEstId, String perMadre, String perPadre) {
 		super();
 		this.perDui = perDui;
 		this.perPNombre = perPNombre;
@@ -154,14 +158,14 @@ public class Persona {
 	/**
 	 * @return the perEdad
 	 */
-	public String getPerEdad() {
+	public Integer getPerEdad() {
 		return perEdad;
 	}
 
 	/**
 	 * @param perEdad the perEdad to set
 	 */
-	public void setPerEdad(String perEdad) {
+	public void setPerEdad(Integer perEdad) {
 		this.perEdad = perEdad;
 	}
 

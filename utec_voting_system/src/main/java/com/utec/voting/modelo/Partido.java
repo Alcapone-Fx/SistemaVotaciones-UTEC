@@ -5,49 +5,80 @@ package com.utec.voting.modelo;
  * @version 1.0 Date: September 2019
  */
 public class Partido {
-	private Integer genId;
-	private String genGenero;
+	private Integer parId;
+	private String parNombre;
+	
+	public Partido() {
+		
+	}
 	
 	/**
-	 * @param genId
-	 * @param genGenero
+	 * @param parId
+	 * @param parNombre
 	 */
-	public Partido(Integer genId, String genGenero) {
+	public Partido(Integer parId, String parNombre) {
 		super();
-		this.genId = genId;
-		this.genGenero = genGenero;
+		this.parId = parId;
+		this.parNombre = parNombre;
+	}
+	/**
+	 * @return the parId
+	 */
+	public Integer getParId() {
+		return parId;
+	}
+	/**
+	 * @param parId the parId to set
+	 */
+	public void setParId(Integer parId) {
+		this.parId = parId;
+	}
+	/**
+	 * @return the parNombre
+	 */
+	public String getParNombre() {
+		return parNombre;
+	}
+	/**
+	 * @param parNombre the parNombre to set
+	 */
+	public void setParNombre(String parNombre) {
+		this.parNombre = parNombre;
 	}
 
-	/**
-	 * @return the genId
-	 */
-	public Integer getGenId() {
-		return genId;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((parId == null) ? 0 : parId.hashCode());
+		result = prime * result + ((parNombre == null) ? 0 : parNombre.hashCode());
+		return result;
 	}
 
-	/**
-	 * @param genId the genId to set
-	 */
-	public void setGenId(Integer genId) {
-		this.genId = genId;
-	}
-
-	/**
-	 * @return the genGenero
-	 */
-	public String getGenGenero() {
-		return genGenero;
-	}
-
-	/**
-	 * @param genGenero the genGenero to set
-	 */
-	public void setGenGenero(String genGenero) {
-		this.genGenero = genGenero;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Partido other = (Partido) obj;
+		if (parId == null) {
+			if (other.parId != null)
+				return false;
+		} else if (!parId.equals(other.parId))
+			return false;
+		if (parNombre == null) {
+			if (other.parNombre != null)
+				return false;
+		} else if (!parNombre.equals(other.parNombre))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Partido [genId=" + genId + ", genGenero=" + genGenero + "]";
+		return "Partido [parId=" + parId + ", parNombre=" + parNombre + "]";
 	}
 }
