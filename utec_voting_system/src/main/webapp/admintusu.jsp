@@ -33,7 +33,7 @@
 <body onkeydown="return showKeyCode(event)">
         <%! 
             public int i;
-            public String TipoUsuario;
+            public String tipoUsuario;
         %>
     
         <%
@@ -44,7 +44,7 @@
                 for(TipoUsuario v:l1){
                     if(v.getTusId()==id){
                         i=v.getTusId();
-                        TipoUsuario=v.getTusId();  
+                        tipoUsuario =  v.getTusTipo();
                     }     
                 }
             }
@@ -118,7 +118,7 @@
                                     <div class="form-group">
                                         <div>
                                             <label>Tipo de Usuario:</label><br>
-                                            <input type="text" class="form-control input-sm chat-input"  name="tpusuario" id="tpusuario" placeholder="Escriba el Tipo de Usuario" onkeyup="validacion('tpusuario');" size="50" value="<%if(request.getParameter("edit")!=null){out.print(TipoUsuario);}%>" required>
+                                            <input type="text" class="form-control input-sm chat-input"  name="tpusuario" id="tpusuario" placeholder="Escriba el Tipo de Usuario" onkeyup="validacion('tpusuario');" size="50" value="<%if(request.getParameter("edit")!=null){out.print(tipoUsuario);}%>" required>
                                             <span class="help-block"></span><br>
                                             <input type="hidden" name="txtId" <%if(request.getParameter("edit")!=null){out.print("value="+i);}%>/>
                                         </div>

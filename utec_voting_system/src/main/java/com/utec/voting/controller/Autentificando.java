@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.utec.voting.modelo.Usuario;
+import com.utec.voting.service.DepartamentoService;
+import com.utec.voting.service.EstadoFamiliarService;
+import com.utec.voting.service.GeneroService;
 import com.utec.voting.service.UsuarioService;
 
 /**
@@ -41,6 +44,9 @@ public class Autentificando extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			UsuarioService usuarioService = new UsuarioService();
+			DepartamentoService departamentoService = new DepartamentoService();
+			GeneroService generoService = new GeneroService();
+			EstadoFamiliarService estadoFamiliarService = new EstadoFamiliarService(); 
 			response.setContentType("text/html;charset=UTF-8");
 			String dui = request.getParameter("usuario");
 			String pass = request.getParameter("pass");
@@ -50,26 +56,26 @@ public class Autentificando extends HttpServlet {
 				if (usr.getUsTusId().getTusId() == tipor) {
 					HttpSession sesion = request.getSession(true);
 					sesion.setAttribute("usuario", usr);
-					sesion.setAttribute("departamento", departamento);
-					request.setAttribute("mosDui", ob.mostrarDUI());
-					request.setAttribute("mosDepa", depa.mostrarDepartamento());
-					request.setAttribute("mosEsta", esta.mostrarEstado());
-					request.setAttribute("mosGene", gene.mostrarGenero());
+					sesion.setAttribute("departamento", usr.getUsPerDui().getPerDepId());
+					request.setAttribute("mosDepa", departamentoService.getAll());
+//					request.setAttribute("mosDui", ob.mostrarDUI());
+					request.setAttribute("mosEsta", estadoFamiliarService.getAll());
+					request.setAttribute("mosGene", generoService.getAll());
 					response.sendRedirect("administracion.jsp");
 				} else {
 					HttpSession sesion = request.getSession(true);
-					sesion.setAttribute("departamento", departamento);
-					sesion.setAttribute("usuario", usuario);
+					sesion.setAttribute("departamento", usr.getUsPerDui().getPerDepId());
+					sesion.setAttribute("usuario", usr);
 					sesion.setAttribute("diputado", dui);
-					sesion.setAttribute("dui", usuario_dui);
-					sesion.setAttribute("knowsufragio", sufragio);
+//					sesion.setAttribute("dui", usuario_dui);
+//					sesion.setAttribute("knowsufragio", sufragio);
 					response.sendRedirect("votante.jsp");
 				}
 			} else {
 				HttpSession sesion = request.getSession(true);
-				sesion.setAttribute("votos", voto.mostrar());
-				sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
-				sesion.setAttribute("departamento", departamento);
+//				sesion.setAttribute("votos", voto.mostrar());
+//				sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
+				sesion.setAttribute("departamento", usr.getUsPerDui().getPerDepId());
 				response.sendRedirect("graficosVotaciones.jsp");
 			}
 		} catch (Exception e) {
