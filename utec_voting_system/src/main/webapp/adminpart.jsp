@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@include file="cache.jsp"%>
 <%@page import="java.util.*" %>
-<%@page import="com.utec.voting.model.*"%>
+<%@page import="com.utec.voting.modelo.Partido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession(true);
@@ -37,8 +37,8 @@
                 ArrayList<Partido> l1=new ArrayList<Partido>();
                 l1.addAll((Collection)request.getAttribute("mosPart"));
                 for(Partido v:l1){
-                    if(v.getPartidoId()==Integer.parseInt(id)){
-                        namePartido=v.getPatidoNombre();
+                    if(v.getParId()==Integer.parseInt(id)){
+                        namePartido=v.getParNombre();
                     }
                 }
              }
@@ -149,19 +149,19 @@
                                             for(Partido v:l1){
                                     %>
                                                 <tr>
-                                                    <td><%=v.getPartidoId()%></td>
-                                                    <td><%=v.getPatidoNombre()%></td>
+                                                    <td><%=v.getParId()%></td>
+                                                    <td><%=v.getParNombre()%></td>
                                                 <form name="frmEdit" action="" method="post">
                                                     <td class="text-center"><button class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</button> 
                                                         <input type="hidden" name="btnEdit" value="Edit" >
-                                                        <input type="hidden" name="txtID" value="<%=v.getPartidoId()%>" >
+                                                        <input type="hidden" name="txtID" value="<%=v.getParId()%>" >
                                                     </td>
                                                 </form>
                                                <form name="frmDelete" action="ControladorP" method="post">
                                                     <td class="text-center">
                                                         <button class="btn btn-danger btn-xs" onclick="if(!confirm('¿Desea eliminarar el registro?')) return false;"><span class="fa fa-trash-o fa-lg"></span> Del</button>
                                                         <input type="hidden" name="btnDelete" value="Delete" >
-                                                        <input type="hidden" name="txtID" value="<%=v.getPartidoId()%>" >
+                                                        <input type="hidden" name="txtID" value="<%=v.getParId()%>" >
                                                     </td>
                                                 </form>
                                                 </tr>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@include file="cache.jsp"%>
 <%@page import="java.util.*" %>
-<%@page import="com.utec.voting.model.*"%>
+<%@page import="com.utec.voting.modelo.Departamento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession(true);
@@ -42,9 +42,9 @@
             ArrayList<Departamento> l1=new ArrayList<Departamento>();
             l1.addAll((Collection)request.getAttribute("mosDep"));
             for(Departamento v:l1){
-                if(v.getDepartamento_id()==id){
-                    i=v.getDepartamento_id();
-                    departamento=v.getDepartamento_nombre();
+                if(v.getDepId()==id){
+                    i=v.getDepId();
+                    departamento=v.getDepNombre();
                 }
             }
         }
@@ -174,19 +174,19 @@
                                             l1.addAll((Collection)request.getAttribute("mosDep"));
                                             for(Departamento v:l1){
                                     %>
-                                                <tr><td><%=v.getDepartamento_id()%></td><td><%=v.getDepartamento_nombre()%></td>
+                                                <tr><td><%=v.getDepId()%></td><td><%=v.getDepNombre()%></td>
                                                     <td>
                                                         <form name="frmEdit"  method="post">
                                                         <button class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</button> 
                                                         <center><input type="hidden" name="edit"></center>
-                                                        <input type="hidden" name="ID" value="<%=v.getDepartamento_id()%>" >
+                                                        <input type="hidden" name="ID" value="<%=v.getDepId()%>" >
                                                         </form>
                                                     </td></tr>
                                                     <!--<td>
                                                         <form name="frmDelete" action="ControladorDepartamento" method="post">
                                                         <button class="btn btn-danger btn-xs" onclick="if(!confirm('¿Desea eliminarar el registro?')) return false;"><span class="glyphicon glyphicon-remove"></span> Del</button>
                                                         <input type="hidden" name="btnEliminar">
-                                                        <input type="hidden" name="ID" value="<%=v.getDepartamento_id()%>" >
+                                                        <input type="hidden" name="ID" value="<%=v.getDepId()%>" >
                                                         </form>
                                                     </td></tr>-->
                                                 <%

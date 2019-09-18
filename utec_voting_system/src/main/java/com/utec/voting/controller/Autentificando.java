@@ -6,9 +6,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+
+import com.utec.voting.modelo.Usuario;
+import com.utec.voting.service.UsuarioService;
+
 /**
- *
  * @author Kevin Orellana
+ * @version 1.0 Date: September 2019
  */
 public class Autentificando extends HttpServlet {
 
@@ -16,7 +23,12 @@ public class Autentificando extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	/**
+	 * Variable de logueo para errores.
+	 */
+	static final Logger logger = Logger.getLogger(Autentificando.class);
+	
 	/**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -26,60 +38,46 @@ public class Autentificando extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		String usuario = request.getParameter("usuario");
-		String pass = request.getParameter("pass");
-		
-		
-		/**Usuario objUsuario = new Usuario(usuario, pass);
-		ControladorUsuario cu = new ControladorUsuario();
-		DAL_VotoCandidato voto = new DAL_VotoCandidato();
-		DAL_CandidatoDiputado candidatos = new DAL_CandidatoDiputado();
-		DAL_dui dui = new DAL_dui();
-		DAL_VotoUsuario votousuario = new DAL_VotoUsuario();
-		String usuario_dui = dui.mostrarDui(objUsuario);
-		String departamento = dui.mostrarDepartamentoPerteneciente(usuario_dui);
-		int sufragio = votousuario.knowSufragio(usuario_dui);
-		DAL_dui ob = new DAL_dui();
-		DAL_Departamento depa = new DAL_Departamento();
-		DAL_EstadoFamiliar esta = new DAL_EstadoFamiliar();
-		DAL_Genero gene = new DAL_Genero();
-
-		// if(request.getParameter("btnM")!=null){
-
-		if (cu.validar(objUsuario)) {
-			String tipor = "1";
-			String tipo = cu.tipo(objUsuario);
-			if (tipo.equals(tipor)) {
-				HttpSession sesion = request.getSession(true);
-				sesion.setAttribute("usuario", usuario);
-				sesion.setAttribute("departamento", departamento);
-				request.setAttribute("mosDui", ob.mostrarDUI());
-				request.setAttribute("mosDepa", depa.mostrarDepartamento());
-				request.setAttribute("mosEsta", esta.mostrarEstado());
-				request.setAttribute("mosGene", gene.mostrarGenero());
-				response.sendRedirect("administracion.jsp");
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			UsuarioService usuarioService = new UsuarioService();
+			response.setContentType("text/html;charset=UTF-8");
+			String dui = request.getParameter("usuario");
+			String pass = request.getParameter("pass");
+			Usuario usr =  usuarioService.findByCredentials(dui, pass);
+			if (usr != null) {
+				Integer tipor = 1;
+				if (usr.getUsTusId().getTusId() == tipor) {
+					HttpSession sesion = request.getSession(true);
+					sesion.setAttribute("usuario", usr);
+					sesion.setAttribute("departamento", departamento);
+					request.setAttribute("mosDui", ob.mostrarDUI());
+					request.setAttribute("mosDepa", depa.mostrarDepartamento());
+					request.setAttribute("mosEsta", esta.mostrarEstado());
+					request.setAttribute("mosGene", gene.mostrarGenero());
+					response.sendRedirect("administracion.jsp");
+				} else {
+					HttpSession sesion = request.getSession(true);
+					sesion.setAttribute("departamento", departamento);
+					sesion.setAttribute("usuario", usuario);
+					sesion.setAttribute("diputado", dui);
+					sesion.setAttribute("dui", usuario_dui);
+					sesion.setAttribute("knowsufragio", sufragio);
+					response.sendRedirect("votante.jsp");
+				}
 			} else {
 				HttpSession sesion = request.getSession(true);
+				sesion.setAttribute("votos", voto.mostrar());
+				sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
 				sesion.setAttribute("departamento", departamento);
-				sesion.setAttribute("usuario", usuario);
-				sesion.setAttribute("diputado", dui);
-				sesion.setAttribute("dui", usuario_dui);
-				sesion.setAttribute("knowsufragio", sufragio);
-				response.sendRedirect("votante.jsp");
+				response.sendRedirect("graficosVotaciones.jsp");
 			}
-		} else {
-			HttpSession sesion = request.getSession(true);
-			sesion.setAttribute("votos", voto.mostrar());
-			sesion.setAttribute("candidatos", candidatos.mostrarCandidato());
-			sesion.setAttribute("departamento", departamento);
-			response.sendRedirect("graficosVotaciones.jsp");
-		}**/
+		} catch (Exception e) {
+			logger.error("Error en el proceso: ", e);
+		}
+		
 	}
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -116,6 +114,6 @@ public class Autentificando extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

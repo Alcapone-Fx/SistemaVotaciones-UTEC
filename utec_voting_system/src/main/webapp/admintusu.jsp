@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@include file="cache.jsp"%>
 <%@page import="java.util.*" %>
-<%@page import="com.utec.voting.model.*"%>
+<%@page import="com.utec.voting.modelo.TipoUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession(true);
@@ -42,9 +42,9 @@
                 ArrayList<TipoUsuario> l1=new ArrayList<TipoUsuario>();
                 l1.addAll((Collection)request.getAttribute("mosTU"));
                 for(TipoUsuario v:l1){
-                    if(v.getTipoUsuarioId()==id){
-                        i=v.getTipoUsuarioId();
-                        TipoUsuario=v.getTipoUsuarioTipo();  
+                    if(v.getTusId()==id){
+                        i=v.getTusId();
+                        TipoUsuario=v.getTusId();  
                     }     
                 }
             }
@@ -153,19 +153,19 @@
                                             l1.addAll((Collection)request.getAttribute("mosTU"));
                                             for(TipoUsuario v:l1){
                                     %>
-                                                <tr><td><%=v.getTipoUsuarioId()%></td><td><%=v.getTipoUsuarioTipo()%></td>
+                                                <tr><td><%=v.getTusId()%></td><td><%=v.getTusId()%></td>
                                                     <td>
                                                         <form name="frmEdit" action="" method="post">
                                                         <button class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</button> 
                                                         <input type="hidden" name="edit">
-                                                        <input type="hidden" name="ID" value="<%=v.getTipoUsuarioId()%>" >
+                                                        <input type="hidden" name="ID" value="<%=v.getTusId()%>" >
                                                         </form>
                                                     </td>
                                                     <td>
                                                         <form name="frmDelete" action="ControladorTipoUsuario" method="post">
                                                         <button class="btn btn-danger btn-xs" onclick="if(!confirm('¿Desea eliminarar el registro?')) return false;"><span class="glyphicon glyphicon-remove"></span> Del</button>
                                                         <input type="hidden" name="btnEliminar">
-                                                        <input type="hidden" name="ID" value="<%=v.getTipoUsuarioId()%>" >
+                                                        <input type="hidden" name="ID" value="<%=v.getTusId()%>" >
                                                         </form>
                                                     </td></tr>
                                                 <%

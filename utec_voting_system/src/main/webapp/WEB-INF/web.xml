@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>ControladorPartido</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorPartido</servlet-class>
+        <servlet-class>com.utec.voting.controller.PartidoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorTipoUsuario</servlet-name>

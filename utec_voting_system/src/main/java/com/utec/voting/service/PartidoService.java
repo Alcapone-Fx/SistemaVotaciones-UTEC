@@ -9,6 +9,10 @@ import org.apache.log4j.Logger;
 import com.utec.voting.jdbc.Conexion;
 import com.utec.voting.modelo.Partido;
 
+/**
+ * @author Kevin Orellana
+ * @version 1.0 Date: September 2019
+ */
 public class PartidoService extends Conexion implements Service<Partido>, Serializable{
 
 	/**
