@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 import com.utec.voting.jdbc.Conexion;
-import com.utec.voting.model.Encriptar;
 import com.utec.voting.modelo.Persona;
 import com.utec.voting.modelo.TipoUsuario;
 import com.utec.voting.modelo.Usuario;
+import com.utec.voting.util.Encriptar;
 
 /**
  * @author Kevin Orellana

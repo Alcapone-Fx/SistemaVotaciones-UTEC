@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <%@page import="java.util.*" %>
-<%@page import="com.utec.voting.model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession(true);

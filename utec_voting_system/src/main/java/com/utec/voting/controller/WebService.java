@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 
-import com.utec.voting.model.Conexion;
+import com.utec.voting.jdbc.Conexion;
 /**
  *
  * @author KevinManuel
