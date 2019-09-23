@@ -9,28 +9,8 @@
         <servlet-class>com.utec.voting.controller.CerrarSesion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControladorDireccion</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorDireccion</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ControladorMunicipio</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorMunicipio</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ControladorPartido</servlet-name>
         <servlet-class>com.utec.voting.controller.PartidoController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ControladorTipoUsuario</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorTipoUsuario</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ControladorUsuarios</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorUsuarios</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CrearUsuario</servlet-name>
-        <servlet-class>com.utec.voting.controller.CrearUsuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>WebService</servlet-name>
@@ -38,15 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>ControladorDepartamento</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorDepartamento</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Voto</servlet-name>
-        <servlet-class>com.utec.voting.controller.Voto</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ControladorDui</servlet-name>
-        <servlet-class>com.utec.voting.controller.ControladorDui</servlet-class>
+        <servlet-class>com.utec.voting.controller.DepartamentoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Autentificando</servlet-name>
@@ -57,44 +29,16 @@
         <url-pattern>/LogOut</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControladorDireccion</servlet-name>
-        <url-pattern>/ControladorDireccion</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorMunicipio</servlet-name>
-        <url-pattern>/ControladorMunicipio</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorPartido</servlet-name>
-        <url-pattern>/ControladorP</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorTipoUsuario</servlet-name>
-        <url-pattern>/ControladorTipoUsuario</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorUsuarios</servlet-name>
-        <url-pattern>/ControladorU</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CrearUsuario</servlet-name>
-        <url-pattern>/Registrar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>WebService</servlet-name>
         <url-pattern>/WebService</url-pattern>
-    </servlet-mapping>
-     <servlet-mapping>
-        <servlet-name>Voto</servlet-name>
-        <url-pattern>/Voto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControladorDepartamento</servlet-name>
         <url-pattern>/ControladorDepartamento</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControladorDui</servlet-name>
-        <url-pattern>/ControladorDui</url-pattern>
+        <servlet-name>ControladorPartido</servlet-name>
+        <url-pattern>/ControladorPartido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
