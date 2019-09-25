@@ -13,13 +13,13 @@ import org.apache.log4j.Logger;
 * @author Kevin Orellana
 */
 public class Conexion {
-    private String username = "postgres";
-    private String password = "1234";
-    private String hostname = "127.0.0.1";
-    private String puerto = "5432";
-    private String base = "postgres";
-    private String classname = "org.postgresql.Driver";
-    private String url = "jdbc:postgresql://" + hostname + ":" + puerto + "/" + base;
+    private String username = "root";
+    private String password = "";
+    private String hostname = "localhost";
+    private String puerto = "3306";
+    private String base = "SYSTEM_VOTING";
+    private String classname = "com.mysql.jdbc.Drive";
+    private String url = "jdbc:mysql://" + hostname + ":" + puerto + "/" + base;
     private static Connection conecto;
     private ResultSet rs;
     private PreparedStatement ps;

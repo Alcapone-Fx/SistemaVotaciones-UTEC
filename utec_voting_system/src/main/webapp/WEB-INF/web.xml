@@ -22,11 +22,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Autentificando</servlet-name>
-        <url-pattern>/Login</url-pattern>
+        <url-pattern>/Login.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
-        <url-pattern>/LogOut</url-pattern>
+        <url-pattern>/LogOut.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WebService</servlet-name>
@@ -34,11 +34,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControladorDepartamento</servlet-name>
-        <url-pattern>/ControladorDepartamento</url-pattern>
+        <url-pattern>/ControladorDepartamento.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControladorPartido</servlet-name>
-        <url-pattern>/ControladorPartido</url-pattern>
+        <url-pattern>/ControladorPartido.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,11 +11,11 @@ Object usuario = sesion.getAttribute("usuario")==null ? null : sesion.getAttribu
 	<jsp:body>
 		<table class="table table-striped custab">
     <thead>
-    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>
+    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b>Nuevo</a>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th class="text-center">Action</th>
+            <th class="text-center">Acción</th>
         </tr>
     </thead>
 	<c:forEach var="dpt" items="${listaDepartamento}">
@@ -23,8 +23,8 @@ Object usuario = sesion.getAttribute("usuario")==null ? null : sesion.getAttribu
 		<td><c:out value="${dpt.depNombre}"></c:out></td>
 		<td class="text-center">
 			<a class='btn btn-info btn-xs' href="#">
-			<span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs">
-			<span class="glyphicon glyphicon-remove"></span> Del</a>
+			<span class="glyphicon glyphicon-edit"></span> Editar</a> <a href="#" class="btn btn-danger btn-xs">
+			<span class="glyphicon glyphicon-remove"></span> Eliminar</a>
 		</td>
 	</c:forEach>
     </table>

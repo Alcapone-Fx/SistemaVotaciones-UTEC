@@ -49,7 +49,7 @@
 						    Object usuario = sesion.getAttribute("usuario")==null ? null : sesion.getAttribute("usuario");
 				            if(usuario!=null){
 			        	%>
-						<form method="POST" action="LogOut">
+						<form method="POST" action="LogOut.do">
 							<a href="LogOut?btnCerrar=true"><i
 								class="fa fa-power-off fa-2x fa-3x" aria-hidden="true"
 								style="float: left; margin-top: -4px; margin-left: 20px;"></i></a> <input
@@ -58,7 +58,7 @@
 						<%
 				            } else {
 						%>
-						<form action="Login" method="POST" id="FRM_Login">
+						<form action="Login.do" method="POST" id="FRM_Login">
 							<table style="float: right;">
 								<tr>
 									<td><input type="text" name="usuario" id="usuario"
